@@ -55,24 +55,33 @@ class Order {
         }
     }
 
-    public double calculateTotal() {
-        double total = 0.0;
+    public String generateInvoice() {
+        StringBuilder invoice = new StringBuilder("Ice Cream Shop Invoice\n");
+        double subtotal = 0.0;
 
         for (IceCreamFlavor scoop : scoops) {
-            total += scoop.getPrice();
+            invoice.append(scoop.name()).append(" - 1 scoop: $").append(String.format("%.2f", scoop.getPrice())).append("\n");
+            subtotal += scoop.getPrice();
         }
 
         for (Topping topping : toppings) {
-            total += topping.getPrice();
+            invoice.append(topping.name()).append(" - 1 time: $").append(String.format("%.2f", topping.getPrice())).append("\n");
+            subtotal += topping.getPrice();
         }
 
         if (container != null) {
-            total += container.getPrice();
+            invoice.append(container.getName()).append(": $").append(String.format("%.2f", container.getPrice())).append("\n");
+            subtotal += container.getPrice();
         }
 
-        total += total * taxRate;
+        double tax = subtotal * taxRate;
+        double total = subtotal + tax;
 
-        return total;
+        invoice.append("Subtotal: $").append(String.format("%.2f", subtotal)).append("\n");
+        invoice.append("Tax: $").append(String.format("%.2f", tax)).append("\n");
+        invoice.append("Total Amount Due: $").append(String.format("%.2f", total));
+
+        return invoice.toString();
     }
-    
+
 }
