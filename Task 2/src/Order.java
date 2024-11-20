@@ -55,4 +55,24 @@ class Order {
         }
     }
 
+    public double calculateTotal() {
+        double total = 0.0;
+
+        for (IceCreamFlavor scoop : scoops) {
+            total += scoop.getPrice();
+        }
+
+        for (Topping topping : toppings) {
+            total += topping.getPrice();
+        }
+
+        if (container != null) {
+            total += container.getPrice();
+        }
+
+        total += total * taxRate;
+
+        return total;
+    }
+    
 }
