@@ -10,6 +10,11 @@ class Order {
     public Order() {
         scoops = new ArrayList<>();
         toppings = new ArrayList<>();
-        taxRate = 0.08; 
+        taxRate = 0.08;
+    }
+    public void addScoop(IceCreamFlavor flavor, int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            scoops.add(flavor);
+        }
     }
 }
