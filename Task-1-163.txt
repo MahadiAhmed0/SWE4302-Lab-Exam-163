@@ -1,0 +1,35 @@
+class globalInventoryData:
+
+<11:15>,<Mutation of Static fields>, The static fields such as products, warehouses, and orders are mutable and public. This can lead to uncontrolled modifications of these fields from any part of the code, breaking encapsulation and potentially causing concurrency issues.
+
+<22:23>,<ArrayList over List interface>, The code uses ArrayList instead of the more general List interface. It would be better to declare the variables as List<Integer> instead of ArrayList<Integer> to promote loose coupling and flexibility in changing the implementation type.
+
+class inventorySystem:
+
+<53,55,61>,<Magic Numbers>, There are multiple instances of hardcoded values (like 0.85, 0.95, 0.8, 100.0, etc.) in discount calculations and price computations. These "magic numbers" should be replaced with named constants to improve readability and maintainability.
+
+<21:28>,<Lack of input validation>, Lack of input validation (especially for user input): The method addProduct() lacks proper input validation for certain parameters. For example, it checks if the name is non-empty but doesn't check for other potential invalid inputs (like negative or unreasonable values for price or stock). Adding more validation would enhance robustness.
+
+<88:92>, <Tight Coupling>, The inventorySystem class tightly depends on the global static data in globalInventoryData. This tight coupling makes the system harder to maintain, test, and extend. Using dependency injection or encapsulation could reduce this dependency.
+
+<48:65>,<Duplicate logic for calculating final price (discounts)>The method contains multiple instances of discount logic (e.g., handling percentage, bulk, and seasonal discounts). This logic could be simplified and consolidated to avoid duplication. In particular, "bulk" and "seasonal" discount types contain similar operations that could be refactored to a common helper function.
+
+<116>,<Inconsistent method return types>,The processOrder() method has inconsistent return types based on different conditions. For example, it returns -1 in case of errors or invalid inputs but doesn't always have a meaningful return type that matches the actual use case. A more appropriate return type should be used for clarity.
+
+<184:213>,<Poor encapsulation>,, The fields in Product and Order are directly exposed (public). This violates the encapsulation principle. These fields should be private and accessed through getters and setters to ensure better data integrity and control over the state of objects.
+
+<122:127>,<Potential for inconsistent order processing>, The processOrder() method assumes that product IDs and quantities are aligned, but if the two lists (productIds and quantities) are inconsistent in length, an error will occur. While this is checked, handling this scenario more gracefully would be ideal (perhaps returning a specific error message or throwing a custom exception).
+
+<141><Poor naming conventions for method parameters and fields>The field name customerInfo is vague and could be better named to reflect its true nature to improve clarity.
+
+<79,88,102><Repetitive code for value calculations>, The logic in these methods is very similar, iterating through all products and summing up their values based on different conditions.
+
+class reportScheduler:
+
+<12><Lack of meaningful method names>, The method scheduleReport() takes in two parameters (reportType and frequency), but the method's behavior is limited to printing a statement. It lacks meaningful logic that would justify its existence as a "scheduler." The method name could be misleading, as no actual scheduling or time-based operations are performed.
+
+<unnecessary classes>, The reportScheduler class is unnecessary for the scope of this system since it only prints the scheduled report without any further logic or integration with the system.
+
+
+
+
