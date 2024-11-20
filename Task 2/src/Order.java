@@ -7,6 +7,38 @@ class Order {
     private Container container;
     private double taxRate;
 
+    public List<IceCreamFlavor> getScoops() {
+        return scoops;
+    }
+
+    public void setScoops(List<IceCreamFlavor> scoops) {
+        this.scoops = scoops;
+    }
+
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    public void setToppings(List<Topping> toppings) {
+        this.toppings = toppings;
+    }
+
+    public Container getContainer() {
+        return container;
+    }
+
+    public void setContainer(Container container) {
+        this.container = container;
+    }
+
+    public double getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(double taxRate) {
+        this.taxRate = taxRate;
+    }
+
     public Order() {
         scoops = new ArrayList<>();
         toppings = new ArrayList<>();
@@ -22,4 +54,5 @@ class Order {
             toppings.add(topping);
         }
     }
+
 }
