@@ -17,4 +17,9 @@ class Order {
             scoops.add(flavor);
         }
     }
+    public void addTopping(Topping topping, int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            toppings.add(topping);
+        }
+    }
 }
